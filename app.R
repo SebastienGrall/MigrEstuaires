@@ -20,6 +20,7 @@ library(sf)
 df<-sf::read_sf("data/Migrateurs_estuaires.gpkg")
 data_df<-as.data.frame(df)
 data_df<-select(data_df,1:3)
+reco_pertu<-read.csv2("data/Tableau_activites_perturbations_recommandations.csv")
 
 
 ui <-shinydashboard::dashboardPage( title="MigrEstuaires",
@@ -70,6 +71,10 @@ ui <-shinydashboard::dashboardPage( title="MigrEstuaires",
                                                                                           collapsible = TRUE,
                                                                                           width = 8,
                                                                                           imageOutput("myImage")),
+                                                                  shinydashboardPlus::box(title ="Recommandations de gestions",
+                                                                                          collapsible = TRUE,
+                                                                                          width = 10,
+                                                                                          DTOutput("table_reco"))
                                           )),
                                     
                                     sidebar =   shinydashboard::dashboardSidebar(disable = TRUE)
@@ -142,7 +147,9 @@ server <- function(input, output,session) {
          alt = "This is alternate text")
   }, deleteFile = FALSE)
 
-    
+  output$table_reco <- renderDT({
+    reco_pertu
+  })
     
   
 }

@@ -57,7 +57,7 @@ ui <-shinydashboard::dashboardPage( title="MigrEstuaires",
                                                 tags$link(rel = "shortcut icon", href = "favicon.ico")),
                                       
                                       fluidRow(
-                                        shinydashboardPlus::box(title ="Carto",
+                                        shinydashboardPlus::box(title ="Cartographie",
                                                                                           collapsible = TRUE,
                                                                                           width = 6,
                                                                 
@@ -67,11 +67,11 @@ ui <-shinydashboard::dashboardPage( title="MigrEstuaires",
                                                                                           collapsible = TRUE,
                                                                                           width = 4,
                                                                                           DTOutput("myTable")),
-                                                                  shinydashboardPlus::box(title ="Calendrier migrations",
+                                                                  shinydashboardPlus::box(title ="Calendrier des migrations",
                                                                                           collapsible = TRUE,
                                                                                           width = 8,
                                                                                           imageOutput("myImage")),
-                                                                  shinydashboardPlus::box(title ="Recommandations de gestions",
+                                                                  shinydashboardPlus::box(title ="Perturbations et recommandations de gestion",
                                                                                           collapsible = TRUE,
                                                                                           width = 10,
                                                                                           DTOutput("table_reco"))
@@ -130,7 +130,12 @@ server <- function(input, output,session) {
   output$myTable <- renderDT({
     return(if(is.null(data$clickedMarker$id)){NULL}else{
       df<-subset(data_df,Estuaire==data$clickedMarker$id)
-      datatable(df) %>% formatStyle(
+      df %>% 
+        datatable(rownames=F,options = list(
+          dom='t'
+        )
+          ) %>%
+        formatStyle(
         'Enjeux',
         target = 'row',
         backgroundColor = styleEqual(c("Très fort","Fort","Moyen","Faible","Très faible"), c('red','orange','yellow','green','lightskyblue')))}
@@ -148,7 +153,10 @@ server <- function(input, output,session) {
   }, deleteFile = FALSE)
 
   output$table_reco <- renderDT({
-    reco_pertu
+    reco_pertu%>% 
+      datatable(rownames=F,options = list(
+        dom='t'
+      ),escape = F)
   })
     
   

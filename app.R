@@ -19,7 +19,7 @@ library(sf)
 
 df<-sf::read_sf("data/Migrateurs_estuaires.gpkg")
 data_df<-as.data.frame(df)
-data_df<-select(data,1:3)
+data_df<-select(data_df,1:3)
 
 
 ui <-shinydashboard::dashboardPage( title="MigrEstuaires",
@@ -65,7 +65,7 @@ ui <-shinydashboard::dashboardPage( title="MigrEstuaires",
                                                                   shinydashboardPlus::box(title ="Enjeux migrateurs",
                                                                                           collapsible = TRUE,
                                                                                           width = 4,
-                                                                                          tableOutput("myTable")),
+                                                                                          DTOutput("myTable")),
                                                                   shinydashboardPlus::box(title ="Calendrier migrations",
                                                                                           collapsible = TRUE,
                                                                                           width = 8,
@@ -84,7 +84,7 @@ server <- function(input, output,session) {
   # produce the basic leaflet map with single marker
   
   FishIcon <- leaflet::makeIcon(
-    iconUrl = "www/pngegg.png",
+    iconUrl = "www/fish_works.png",
     iconWidth = 50,
   )
   
@@ -122,9 +122,13 @@ server <- function(input, output,session) {
       leaflet::setView(lat=49,lng=0.3,zoom=7)
   })
   
-  output$myTable <- renderTable({
+  output$myTable <- renderDT({
     return(if(is.null(data$clickedMarker$id)){NULL}else{
-      subset(data_df,Estuaire==data$clickedMarker$id)}
+      df<-subset(data_df,Estuaire==data$clickedMarker$id)
+      datatable(df) %>% formatStyle(
+        'Enjeux',
+        target = 'row',
+        backgroundColor = styleEqual(c("Très fort","Fort","Moyen","Faible","Très faible"), c('red','orange','yellow','green','lightskyblue')))}
     )
   })
   

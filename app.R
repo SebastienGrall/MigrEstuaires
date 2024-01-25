@@ -20,6 +20,7 @@ library(sf)
 df<-sf::read_sf("data/Migrateurs_estuaires.gpkg")
 data_df<-as.data.frame(df)
 data_df<-select(data_df,1:3)
+data_df$Enjeux<-factor(data_df$Enjeux, levels = c("Très fort","Fort" ,"Moyen","Faible","Très faible"))
 reco_pertu<-read.csv2("data/Tableau_activites_perturbations_recommandations.csv")
 
 
@@ -83,8 +84,7 @@ ui <-shinydashboard::dashboardPage( title="MigrEstuaires",
 # Define server logic required to draw a histogram
 server <- function(input, output,session) {
   
-  #updateSelectizeInput(session, "select_ref_dc", choices = ref_dc@data$dc_code, selected = NULL)
-  data <- reactiveValues(clickedMarker=NULL)
+    data <- reactiveValues(clickedMarker=NULL)
   
   # produce the basic leaflet map with single marker
   
@@ -130,6 +130,7 @@ server <- function(input, output,session) {
   output$myTable <- renderDT({
     return(if(is.null(data$clickedMarker$id)){NULL}else{
       df<-subset(data_df,Estuaire==data$clickedMarker$id)
+      df<-df[order(df$Enjeux),]
       df %>% 
         datatable(rownames=F,options = list(
           dom='t'

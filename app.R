@@ -22,7 +22,7 @@ data_df<-as.data.frame(df)
 data_df<-select(data_df,1:3)
 data_df$Enjeux<-factor(data_df$Enjeux, levels = c("Très fort","Fort" ,"Moyen","Faible","Très faible"))
 reco_pertu<-read.csv2("data/Tableau_activites_perturbations_recommandations.csv")
-
+colnames(reco_pertu)<-c("Activité","Facteurs de perturbation","Impacts potentiels","Cadre réglementaire","Recommandations et Orientations")
 
 ui <-shinydashboard::dashboardPage( title="MigrEstuaires",
                                     header = shinydashboardPlus::dashboardHeader(title= tags$a(href="https://seinormigr.fr", target="_blank",
@@ -159,7 +159,6 @@ server <- function(input, output,session) {
         dom='t'
       ),escape = F)
   })
-    
   
 }
 

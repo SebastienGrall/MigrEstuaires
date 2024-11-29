@@ -156,7 +156,7 @@ server <- function(input, output,session) {
   output$table_reco <- renderDT({
     reco_pertu%>% 
       datatable(rownames=F,options = list(
-        dom='t'
+        dom='t',scrollX = TRUE, scrollY=TRUE
       ),escape = F)
   })
   

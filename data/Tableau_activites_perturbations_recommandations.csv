@@ -1,9 +1,13 @@
-﻿Activité;Facteur de perturbation;Impacts potentiels;Cadre réglementaire;Recommandations/Orientations
-Développement et exploitation d’infrastructures d’énergie renouvelable en mer, y compris les parcs éoliens et hydroliens ;"Bruit et perturbations (issus, par exemple, de l’augmentation du trafic maritime pendant la construction, de la pose de câbles, d’activités d’installation de pieux, du dragage). 
+﻿Activité;Facteur de perturbation;Impacts potentiels;Recommandations/Orientations;Type d'activités
+Développement et exploitation d’infrastructures d’énergie renouvelable en mer, y compris les parcs éoliens et hydroliens, les cables de raccordement et les cables électriques/telecom;"Bruit pendant la phase travaux (augmentation du trafic maritime, pose des pieux et cables, élimination de munitions non explosées ...). 
+<br/>
+Perturbations physique des habitats (installation de câbles, pieux, dragage ...)
+<br/>
+Risque de contamination chimique
 <br/>
 Champs électromagnétiques (CEM) provenant des câbles.
 <br/>
-Impacts directs potentiels des pales (génération d’énergie hydrolienne).  
+Impacts directs potentiels des pales (génération d’énergie hydrolienne).
 <br/>
 Élimination de munitions non explosées.";"Mortalité possible.
 <br/>
@@ -15,26 +19,28 @@ Fragmentation des bancs de poissons.
 <br/>
 Risque accru de prédation. 
 <br/>
-Destruction des hauts-fonds 
+Destruction ou perturbation des fonds marins
 <br/>
 Impacts sur les zones d’alimentation et les espèces de proies.  
 <br/>
 Impacts écosystémiques incertains des structures sous-marines.
 <br/>
-Dommages physiques ou mortalité directe dus à des collisions avec les pâles. ";;"1. Éviter les activités d’installation de pieux par percussion pendant les périodes de migration clés
+Dommages physiques ou mortalité directe dus à des collisions avec les pâles. ";"1. Éviter les activités d’installation de pieux par percussion pendant les périodes de migration clés à proximité des fleuves ou pendant les périodes de concentration connues sur des zones de croissance en mer.
 <br/>
 2. Explorer le recours à des mesures d’atténuation telles que le « démarrage en douceur » et les techniques d’amortissement du bruit telles que les revêtements et les écrans à bulles. Conditionner ou recommander d’autres techniques d’installation de pieux, par exemple tarière/forage, méthode hydraulique. 
 <br/>
-3. Identifier les principaux facteurs environnementaux influençant le mouvement des juvéniles en dévalaison tels que le débit du cours d'eau, l'alternance jour/nuit, la température et utiliser ces informations pour affiner davantage les conseils aux porteurs de projets quant au calendrier des activité.
+3. Identifier les principaux facteurs environnementaux influençant le mouvement des juvéniles en dévalaison tels que le débit du cours d'eau, l'alternance jour/nuit, la température et utiliser ces informations pour affiner davantage les conseils aux porteurs de projets quant au calendrier des activités pour les projets les plus proches de la côte.
 <br/>
-4. Inclure spécifiquement aux études d'impacts les voies migratoires des salmonidés migrateurs en utilisant les données SAMARCH.
+4. Inclure spécifiquement aux études d'impacts les voies migratoires des salmonidés migrateurs en utilisant les données SAMARCH et les zones de plus fortes probabilités de présence en mer d'aloses ou de salmonidés.
 <br/>
 5. Conduire des investigations supplémentaires si les données ne sont pas disponibles (ou pas assez précises) sur la zone du projet.
 <br/>
-6. Evaluer la plus value écologique apportée par les structures artificielles, et le cas échéant protéger la zone.
+6. Evaluer une éventuelle plus value écologique apportée par les structures artificielles vis à vis des migrateurs amphihalins, et le cas échéant protéger la zone.
 <br/>
-7. Restreindre certains types d’activités de pêche marine commerciale (par exemple, le chalutage) dans les zones où les structures sont placées qui peuvent servir à protéger les migrateurs amphihalins tout en étant vigilant aux effets de déplacement de la pression de pêche."
-Construction, exploitation et entretien d'ouvrages pour la navigation, la protection contre les inondations, la récupération de terres, les activités de loisirs et les énergies renouvelables (hydroélectricité) ;"Bruit et perturbations lors de la construction et l'exploitation
+7. Restreindre certains types d’activités de pêche marine commerciale (par exemple, le chalutage) dans les zones où les structures sont placées qui peuvent servir à protéger les migrateurs amphihalins tout en étant vigilant aux effets de déplacement de la pression de pêche.";TRAVAUX DANS OU A PROXIMITE DES ESTUAIRES
+Construction, exploitation et entretien d'ouvrages pour la navigation, aménagements portuaires, la protection contre les inondations, la récupération de terres (poldérisation), les activités de loisirs et les énergies renouvelables (hydroélectricité) ;"Bruit lors de la construction et l'exploitation
+<br/>
+Perturbations physiques et chimiques lors de la construction et l'exploitation
 <br/>
 Présence d'un obstacle à la migration
 <br/>
@@ -42,15 +48,64 @@ Turbines hydroélectriques";"Retard ou blocage à la migration
 <br/>
 Qualité et quantité de l’eau
 <br/>
-Bruit et perturbations
+Bruit 
+<br/>
+Perte/perturbations des habitats benthiques et pélagiques et de la chaine trophique
 <br/>
 Mortalité directe (turbine) 
 <br/>
-Possibilité accrue de prédation";;"1. Recherche des options d’élimination des obstacles existants lorsqu’aucune fonction critique n’est identifiée.
+Possibilité accrue de prédation";"1. Recherche des options d’élimination des obstacles existants lorsqu’aucune fonction critique n’est identifiée.
 <br/>
-2. Evaluer la construction d'un nouvel obstacle estuarien en tenant compte des espèces de poissons et en comprenant pleinement les impacts potentiels de l'obstacle pendant la construction et son exploitation ultérieure : <br/>
-      - Mesures de restrictions relatives au calendrier des travaux et au maintien du débit et du passage pour toutes les espèces de poissons avant, pendant et après la construction <br/>
-       - Mise en place de systèmes robustes efficaces de surveillance des poissons."
+2. Evaluer la construction d'un nouvel obstacle estuarien en tenant compte des espèces de poissons et en intégrant pleinement les impacts potentiels de l'obstacle pendant la construction et son exploitation ultérieure : 
+<br/>
+      - Mesures de restrictions relatives au calendrier des travaux et au maintien du débit et du passage pour toutes les espèces de poissons avant, pendant et après la construction
+ <br/>
+       - Mise en place de systèmes robustes efficaces de surveillance des poissons.";TRAVAUX DANS OU A PROXIMITE DES ESTUAIRES
+Dragage des estuaires et chenaux / immersion;"Qualité de l’eau.
+<br/>
+Bruit.
+<br/>
+Perturbations physiques des habitats (extraction, dépôt de matériel, MES, …)
+<br/>
+Champs électromagnétiques (CEM). ";"Interruption des routes migratoires.
+<br/>
+Perte/perturbations des habitats benthiques et pélagiques et de la chaine trophique.
+<br/>
+Risque accru de prédation et impacts ou perte des zones d’alimentation.
+<br/>
+Mortalité directe par entraînement dans le système d'aspiration (anguille, lamproies).
+<br/>
+Risque d’abaissement des niveaux d’oxygène dissous.";"1. Eviter ou restreindre les activités de dragage pendant les pics de migration des géniteurs et de dévalaison des smolts (période de marées), notamment vis à vis des arrivées de civelles.
+<br/>
+2. Identifier les pincipaux facteurs environnementaux influençant le mouvement des poissons, tels que les débits, les marées ou encore la températures et utiliser ces informations pour mieux en avertir les maîtres d'ouvrages des opérations.
+<br/>
+3. Recommander une surveillance accrue de la qualité de l'eau en cas de situations à hauts risques (par exemple, oxygène dissous et sédiments en suspension).
+<br/>
+4. Lorsque des études d’impact sur l’environnement sont nécessaires, celles-ci devraient inclure spécifiquement des évaluations des impacts potentiels sur les voies de migration des poissons. ";TRAVAUX DANS OU A PROXIMITE DES ESTUAIRES
+Prélèvement et rejets d’eau (Exemples: eau de refroidissement des centrales électriques, l’approvisionnement en eau potable...)  ;"Qualité et quantité de l’eau.
+<br/>
+Impacts thermiques (source ponctuelle et cumulée).
+<br/>
+Mobilisation des sédiments. ";"Mortalité directe par entraînement dans les systèmes de pompages et retards à la migration liés aux obstacles. 
+<br/>
+Diminution du débit d’eau douce en lien avec les facteurs déclencheurs de migrations.
+<br/>
+Impacts à plus grande échelle des rejets thermiques sur l’habitat et l’écosystème et impacts connexes sur la qualité de l’eau.  ";"1. Eviter les prélèvements en périodes de migration
+<br/>
+2. Evaluer les impacts locaux et cumulés des systèmes de prélèvement et /ou rejets d'eau et adopter les des pratiques adaptées et pertinentes sur les impacts thermiques des rejets dans un contexte de réchauffement climatique";TRAVAUX DANS OU A PROXIMITE DES ESTUAIRES
+Développement du littoral et des estuaires, urbanisation, infrastructure, remise en état des terres et défense contre les inondations/gestion des rives ;"Phase de construction :  qualité de l’eau, bruit et perturbations.
+<br/>
+Phase terminée : perte de l’habitat intertidal.  ";"Perte potentiel d’habitat intertidal en lien avec les voies de migration et les aires d'alimentation des poissons. 
+<br/>
+Retards dans la migration, fragmentation des bancs de poissons, risque accru de prédation.  
+<br/>
+Perte de refuges dans les habitats, risque accru de prédation et perte de sources d’alimentation.
+<br/>
+Perturbations physiques des habitats en phase construction.";"1. Tenir compte des espèces de poissons et comprendre pleinement les impacts potentiels de la construction et de la perte subséquente de l’habitat intertidal. Cela comprendrait probablement, mais sans s’y limiter, des restrictions relatives au calendrier des travaux et le maintien d'une voie de passage pour toutes les espèces de poissons avant, pendant et après la construction. 
+<br/>
+2. Recommander des techniques nouvelles et novatrices pour adoucir les bords de l’estuaire et créer un couvert pour les poissons.
+<br/>
+3. Atténuation de la perte d’habitat intertidal en lien avec les voies de migration des poissons, les aires d’alimentation et de croissance. Pour les Zones Spéciales de Conservation (ZSC) existantes et voisines dont la liste d’espèces répertoriées inclut des migrateurs amphihalins, il convient de spécifier des évaluations appropriées dans les documents d'incidence.";TRAVAUX DANS OU A PROXIMITE DES ESTUAIRES
 Pêche commerciale et de loisir ;"Pêche ciblée
 <br/>
 Potentiel de prises accessoires de migrateurs amphihalins, y compris aux stades de vie juvéniles.";"Mortalité directe (pêche ciblée)
@@ -63,12 +118,11 @@ Interruption des schémas de migration.
 <br/>
 Exposition à une prédation accrue, par exemple, par les phoques.
 <br/>
-Mortalité directe ou retardée due au stress, à la perte d’écailles, etc. ";"DHFF, L.414-4 du code de l’environnement 
+Mortalité directe ou retardée due au stress, à la perte d’écailles, etc.
 <br/>
-Plan national migrateurs amphihalins / Thème ""pêche""
-";"1. Collecter et évaluer les prises ciblée de migrateurs amphihalins (échantillonnage accru des prises et des observations sur les navires ayant des pratiques (engins / zones / périodes) identifiées comme à risque)
+Déplétion trophique via l'extraction d'espèces proies du milieu.";"1. Collecter et évaluer les prises ciblée de migrateurs amphihalins (échantillonnage accru des prises et des observations sur les navires ayant des pratiques (engins / zones / périodes) identifiées comme à risque)
 <br/>
-2. Collecter et évaluer les prises accessoires de migrateurs amphihalins en identifiant les types de pêches/d’engins et les zones / périodes à haut risque (mettre en place un système de déclaration ou d'enquête performant).
+2. Collecter et évaluer les prises accessoires de migrateurs amphihalins en identifiant les types de pêches/d’engins et les zones / périodes à haut risque (mettre en place un système de déclaration ou d'enquête performant). Collecter des individus capturés et morts pour améliorer les connaissances.
 <br/>
 3. Mieux encadrer les pratiques de pêche qui risquent de capturer des migrateurs amphihalins
 <br/>
@@ -76,37 +130,9 @@ Plan national migrateurs amphihalins / Thème ""pêche""
 <br/>
 5. Collaborer avec les organismes de réglementation pour une meilleure prise en compte des risques sur les stocks migratoires
 <br/>
-6. Sensibiliser les pêcheurs de loisir aux filets sur la présence et les risques de capture de ces espèces et les bonnes pratiques à adopter pour éviter les captures ou pour les remettre à l'eau
+6. Sensibiliser les pêcheurs de loisir aux filets sur la présence et les risques de capture de ces espèces et les bonnes pratiques à adopter pour éviter les captures ou pour les remettre à l'eau.
 <br/>
-7. Renforcer la protection de ces espèces au sein des AMP concernées."
-Dragage des estuaires et chenaux;"Qualité de l’eau.
-<br/>
-Bruit et perturbations.  
-<br/>
-Champs électromagnétiques (CEM). ";"Interruption des routes migratoires.
-<br/>
-Destruction des hauts-fonds. 
-<br/>
-Risque accru de prédation et impacts ou perte des zones d’alimentation.
-<br/>
-Risque d’abaissement des niveaux d’oxygène dissous.";;"1. Eviter ou restreindre les activités de dragage pendant les pics de migration des géniteurs et de dévalaison des smolts (période de marées).
-<br/>
-2. Identifier les pincipaux facteurs environnementaux influençant le mouvement des poissons, tels que les débits, les marées ou encore la températures et utiliser ces informations pour mieux en avertir les maîtres d'ouvrages des opérations.
-<br/>
-3. Recommander une surveillance accrue de la qualité de l'eau en cas de situations à hauts risques (par exemple, oxygène dissous et sédiments en suspension).
-<br/>
-4. Lorsque des études d’impact sur l’environnement sont nécessaires, celles-ci devraient inclure spécifiquement des évaluations des impacts potentiels sur les voies de migration des poissons. "
-Prélèvement et rejets d’eau (Exemples: eau de refroidissement des centrales électriques, l’approvisionnement en eau potable...)  ;"Qualité et quantité de l’eau.
-<br/>
-Impacts thermiques (source ponctuelle et cumulée).
-<br/>
-Mobilisation des sédiments. ";"Mortalité directe par entraînement dans les systèmes de pompages et retards à la migration lié aux obstacles. 
-<br/>
-Diminution du débit d’eau douce en lien avec les facteurs déclencheurs de migrations.
-<br/>
-Impacts à plus grande échelle des rejets thermiques sur l’habitat et l’écosystème et impacts connexes sur la qualité de l’eau.  ";;"1. Eviter les prélèvements en périodes de migration
-<br/>
-2. Evaluer les impacts locaux et cumulés des systèmes de prévelement et /ou rejets d'eau et adopter les des pratiques adaptées et pertinentes sur les impacts thermiques des rejets dans un contexte de réchauffement climatique"
+7. Renforcer la protection de ces espèces au sein des AMP concernées.";USAGES
 Navigation;"Impacts à la migration.
 <br/>
 Qualité de l’eau.
@@ -115,17 +141,6 @@ Bruit et perturbations.";"Retards et/ou blocage dans la migration.
 <br/>
 Fragmentation des bancs de poissons.
 <br/>
-Risque accru de prédation.";Autorités portuaires;"1. Explorer les moyens d’éviter temporairement ou de manière saisonnière les périodes de migration clés (en fonction de l’importance probable du trafic maritime et de la taille relative des estuaires). 
+Risque accru de prédation.";"1. Explorer les moyens d’éviter temporairement ou de manière saisonnière les périodes de migration clés (en fonction de l’importance probable du trafic maritime et de la taille relative des estuaires). 
 <br/>
-2. Mettre en place des mesures de restauration de la libre circulation (construction de dispositifs de franchissement et/ou manoeuvre d'ouvrages)"
-Développement du littoral et des estuaires, logement, infrastructure, remise en état des terres et défense contre les inondations/gestion des rives ;"Phase de construction :  qualité de l’eau, bruit et perturbations.
-<br/>
-Phase terminée : perte de l’habitat intertidal.  ";"Perte potentiel d’habitat intertidal en lien avec les voies de migration et les aires d'alimentation des poissons. 
-<br/>
-Retards dans la migration, fragmentation des bancs de poissons, risque accru de prédation.  
-<br/>
-Perte de refuges dans les habitats, risque accru de prédation et perte de sources d’alimentation";;"1. Tenir compte des espèces de poissons et comprendre pleinement les impacts potentiels de la construction et de la perte subséquente de l’habitat intertidal. Cela comprendrait probablement, mais sans s’y limiter, des restrictions relatives au calendrier des travaux et le maintien d'une voie de passage pour toutes les espèces de poissons avant, pendant et après la construction. 
-<br/>
-2. Recommander des techniques nouvelles et novatrices pour adoucir les bords de l’estuaire et créer un couvert pour les poissons.
-<br/>
-3. Atténuation de la perte d’habitat intertidal en lien avec les voies de migration des poissons, les aires d’alimentation et de fourrage. Pour les Zones Spéciales de Conservation spécifiques (ZSC) existantes et voisines dont la liste d’espèces répertoriées inclut des migrateurs amphihalins, il convient de spécifier des évaluations appropriées dans les documents d'incidence."
+2. Mettre en place des mesures de restauration de la libre circulation (construction de dispositifs de franchissement et/ou manoeuvre d'ouvrages)";USAGES

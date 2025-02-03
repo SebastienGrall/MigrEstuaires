@@ -1,0 +1,79 @@
+Especes;Type de migration;debut periode;fin periode;niveau de presence;niveau
+Aloses;Montaison;15/03/2000;15/04/2000;présence forte;16
+Aloses;Montaison;15/04/2000;15/06/2000;présence maximale;16
+Aloses;Montaison;15/06/2000;15/07/2000;présence forte;16
+Aloses;Montaison;01/01/2000;15/03/2000;présence anectodique;16
+Aloses;Montaison;15/07/2000;31/12/2000;présence anectodique;16
+Aloses;Dévalaison;01/01/2000;01/07/2000;présence anectodique;15
+Aloses;Dévalaison;15/11/2000;31/12/2000;présence anectodique;15
+Aloses;Dévalaison;01/07/2000;30/09/2000;présence maximale;15
+Aloses;Dévalaison;30/09/2000;31/10/2000;présence forte;15
+Aloses;Dévalaison;31/10/2000;15/11/2000;présence faible;15
+Aloses;Grand estuaire;01/01/2000;31/12/2000;"présence annuelle dans le ""grand estuaire""";14
+Anguille européenne;Montaison;01/01/2000;15/01/2000;présence forte;13
+Anguille européenne;Montaison;15/01/2000;31/07/2000;présence maximale;13
+Anguille européenne;Montaison;31/07/2000;30/09/2000;présence forte;13
+Anguille européenne;Montaison;30/09/2000;31/12/2000;présence anectodique;13
+Anguille européenne;Dévalaison;01/01/2000;31/03/2000;présence maximale;12
+Anguille européenne;Dévalaison;31/03/2000;31/08/2000;présence faible;12
+Anguille européenne;Dévalaison;31/08/2000;31/12/2000;présence maximale;12
+Anguille européenne;Grand estuaire;01/01/2000;31/12/2000;"présence annuelle dans le ""grand estuaire""";11
+Lamproie marine;Montaison;01/01/2000;15/03/2000;présence anectodique;10
+Lamproie marine;Montaison;15/03/2000;15/04/2000;présence forte;10
+Lamproie marine;Montaison;15/04/2000;30/06/2000;présence maximale;10
+Lamproie marine;Montaison;30/06/2000;31/07/2000;présence forte;10
+Lamproie marine;Montaison;31/07/2000;31/12/2000;présence anectodique;10
+Lamproie marine;Dévalaison;01/01/2000;15/03/2000;présence maximale;9
+Lamproie marine;Dévalaison;15/03/2000;31/03/2000;présence forte;9
+Lamproie marine;Dévalaison;31/03/2000;01/11/2000;présence anectodique;9
+Lamproie marine;Dévalaison;01/11/2000;15/11/2000;présence forte;9
+Lamproie marine;Dévalaison;15/11/2000;31/12/2000;présence maximale;9
+Lamproie fluviatile;Montaison;01/01/2000;30/04/2000;présence maximale;8
+Lamproie fluviatile;Montaison;30/04/2000;15/05/2000;présence forte;8
+Lamproie fluviatile;Montaison;15/05/2000;01/10/2000;présence anectodique;8
+Lamproie fluviatile;Montaison;01/10/2000;01/11/2000;présence faible;8
+Lamproie fluviatile;Montaison;01/11/2000;01/12/2000;présence forte;8
+Lamproie fluviatile;Montaison;01/12/2000;31/12/2000;présence maximale;8
+Lamproie fluviatile;Dévalaison;01/01/2000;01/03/2000;présence faible;7
+Lamproie fluviatile;Dévalaison;01/03/2000;15/03/2000;présence forte;7
+Lamproie fluviatile;Dévalaison;15/03/2000;15/06/2000;présence maximale;7
+Lamproie fluviatile;Dévalaison;15/06/2000;01/07/2000;présence forte;7
+Lamproie fluviatile;Dévalaison;01/07/2000;15/08/2000;présence anectodique;7
+Lamproie fluviatile;Dévalaison;15/08/2000;01/11/2000;présence forte;7
+Lamproie fluviatile;Dévalaison;01/11/2000;31/12/2000;présence faible;7
+Lamproie fluviatile;Grand estuaire;01/01/2000;31/12/2000;"présence annuelle dans le ""grand estuaire""";6
+Saumon atlantique;Montaison;01/01/2000;01/03/2000;présence anectodique;5
+Saumon atlantique;Montaison;01/03/2000;01/04/2000;présence faible;5
+Saumon atlantique;Montaison;01/04/2000;01/05/2000;présence forte;5
+Saumon atlantique;Montaison;01/05/2000;01/08/2000;présence maximale;5
+Saumon atlantique;Montaison;01/08/2000;01/10/2000;présence forte;5
+Saumon atlantique;Montaison;01/10/2000;01/12/2000;présence maximale;5
+Saumon atlantique;Montaison;01/12/2000;15/12/2000;présence forte;5
+Saumon atlantique;Montaison;15/12/2000;31/12/2000;présence faible;5
+Saumon atlantique;Dévalaison;01/01/2000;15/01/2000;présence forte;4
+Saumon atlantique;Dévalaison;15/01/2000;15/03/2000;présence anectodique;4
+Saumon atlantique;Dévalaison;15/03/2000;15/04/2000;présence forte;4
+Saumon atlantique;Dévalaison;15/04/2000;15/06/2000;présence maximale;4
+Saumon atlantique;Dévalaison;15/06/2000;01/07/2000;présence forte;4
+Saumon atlantique;Dévalaison;01/07/2000;01/10/2000;présence anectodique;4
+Saumon atlantique;Dévalaison;01/10/2000;15/10/2000;présence faible;4
+Saumon atlantique;Dévalaison;15/10/2000;01/11/2000;présence forte;4
+Saumon atlantique;Dévalaison;01/11/2000;31/12/2000;présence maximale;4
+Truite de mer;Montaison;01/01/2000;15/03/2000;présence anectodique;3
+Truite de mer;Montaison;15/03/2000;01/04/2000;présence faible;3
+Truite de mer;Montaison;01/04/2000;01/05/2000;présence forte;3
+Truite de mer;Montaison;01/05/2000;01/08/2000;présence maximale;3
+Truite de mer;Montaison;01/08/2000;01/09/2000;présence forte;3
+Truite de mer;Montaison;01/09/2000;01/10/2000;présence faible;3
+Truite de mer;Montaison;01/10/2000;15/10/2000;présence forte;3
+Truite de mer;Montaison;15/10/2000;01/12/2000;présence maximale;3
+Truite de mer;Montaison;01/12/2000;15/12/2000;présence forte;3
+Truite de mer;Montaison;15/12/2000;31/12/2000;présence anectodique;3
+Truite de mer;Dévalaison;01/01/2000;15/02/2000;présence maximale;2
+Truite de mer;Dévalaison;15/02/2000;01/03/2000;présence forte;2
+Truite de mer;Dévalaison;01/03/2000;01/05/2000;présence maximale;2
+Truite de mer;Dévalaison;01/05/2000;15/05/2000;présence forte;2
+Truite de mer;Dévalaison;15/05/2000;01/12/2000;présence anectodique;2
+Truite de mer;Dévalaison;01/12/2000;15/12/2000;présence forte;2
+Truite de mer;Dévalaison;15/12/2000;31/12/2000;présence maximale;2
+Truite de mer;Grand estuaire;01/01/2000;31/12/2000;"présence annuelle dans le ""grand estuaire""";1

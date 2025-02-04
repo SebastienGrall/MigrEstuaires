@@ -21,8 +21,16 @@ library(cowplot)
 library(reactable)
 
 df<-sf::read_sf("data/Migrateurs_estuaires.gpkg")
+# liaison_estuaires<-sf::read_sf("data/Liaisons_petits_estuaires.gpkg")
+# 
+# liaison_estuaires <- liaison_estuaires %>% 
+#   st_as_sf( coords = c("X", "Y")) %>% 
+#   st_cast("MULTILINESTRING") %>% 
+#   st_set_crs("+init=epsg:2154") %>% 
+#   st_transform(crs="+proj=longlat +datum=WGS84")
 data_df<-as.data.frame(df)
 data_df<-select(data_df,1:3)
+data_df <- data_df %>%  rename(Espèces = SPP)
 data_df$Enjeux<-factor(data_df$Enjeux, levels = c("Très fort","Fort" ,"Moyen","Faible","Très faible"))
 reco_pertu<-read.csv2("data/Tableau_activites_perturbations_recommandations.csv")
 colnames(reco_pertu)<-c("Activité","Facteurs de perturbation","Impacts potentiels","Recommandations et Orientations","Type d'activités")
@@ -111,12 +119,13 @@ server <- function(input, output,session) {
   
   
   output$map <- leaflet::renderLeaflet(
-    leaflet::leaflet(df) %>%
+    leaflet::leaflet() %>%
+      #leaflet::addPolylines(data=liaison_estuaires) %>%
       leaflet::addTiles() %>%
       leaflet::addControl(actionButton("reset_button","Vue générale"),position="topright") %>%
       leaflet::setView(lat=49,lng=0.3,zoom=7) %>%
-      leaflet::addMarkers(icon=FishIcon, layerId = df$Estuaire,
-                          popup = paste("Esuaires : ", df$Estuaire#, "<br>",
+      leaflet::addMarkers(data=df,icon=FishIcon, layerId = df$Estuaire,
+                          popup = paste("Estuaires : ", df$Estuaire#, "<br>",
                                         #"Localisation : ", df$ouv_localisation
                           ))
   )
@@ -152,10 +161,16 @@ server <- function(input, output,session) {
       leaflet::setView(lat = choix$lat, lng = choix$lon ,zoom=10)
   },ignoreInit = TRUE)
   
+  observeEvent(input$map_marker_click,{
+    if(!is.null(data$clickedMarker$id)){
+      updateSelectizeInput(session,"estuaires",choices = sort(liste_estuaires),selected = data$clickedMarker$id)
+    }
+  })
   
   output$myTable <- renderDT({
-    return(if(is.null(data$clickedMarker$id)){NULL}else{
-      df<-subset(data_df,Estuaire==data$clickedMarker$id)
+    
+    return(if(input$estuaires==""){NULL}else{
+      df<-subset(data_df,Estuaire==input$estuaires)
       df<-df[order(df$Enjeux),]
       df %>% 
         datatable(rownames=F,options = list(
@@ -164,7 +179,6 @@ server <- function(input, output,session) {
           ) %>%
         formatStyle(
         'Enjeux',
-        target = 'row',
         backgroundColor = styleEqual(c("Très fort","Fort","Moyen","Faible","Très faible"), c('red','orange','yellow','green','lightskyblue')))}
     )
   })

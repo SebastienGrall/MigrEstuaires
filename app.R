@@ -21,13 +21,13 @@ library(cowplot)
 library(reactable)
 
 df<-sf::read_sf("data/Migrateurs_estuaires.gpkg")
-# liaison_estuaires<-sf::read_sf("data/Liaisons_petits_estuaires.gpkg")
-# 
-# liaison_estuaires <- liaison_estuaires %>% 
-#   st_as_sf( coords = c("X", "Y")) %>% 
-#   st_cast("MULTILINESTRING") %>% 
-#   st_set_crs("+init=epsg:2154") %>% 
-#   st_transform(crs="+proj=longlat +datum=WGS84")
+liaison_estuaires<-sf::read_sf("data/Liaisons_petits_estuaires.gpkg")
+
+liaison_estuaires <- liaison_estuaires %>%
+  st_as_sf( coords = c("X", "Y")) %>%
+  st_cast("MULTILINESTRING") %>%
+  st_set_crs("+init=epsg:2154") %>%
+  st_transform(crs="+proj=longlat +datum=WGS84")
 data_df<-as.data.frame(df)
 data_df<-select(data_df,1:3)
 data_df <- data_df %>%  rename(Espèces = SPP)
@@ -112,19 +112,21 @@ server <- function(input, output,session) {
   
   # produce the basic leaflet map with single marker
   
-  FishIcon <- leaflet::makeIcon(
-    iconUrl = "www/fish_works.png",
-    iconWidth = 50,
-  )
+  # FishIcon <- leaflet::makeIcon(
+  #   iconUrl = "www/fish_works.png",
+  #   iconWidth = 50,
+  # )
   
   
   output$map <- leaflet::renderLeaflet(
     leaflet::leaflet() %>%
-      #leaflet::addPolylines(data=liaison_estuaires) %>%
+      leaflet::addPolylines(data=liaison_estuaires,color = "black",opacity = 1,weight = 2) %>%
       leaflet::addTiles() %>%
       leaflet::addControl(actionButton("reset_button","Vue générale"),position="topright") %>%
       leaflet::setView(lat=49,lng=0.3,zoom=7) %>%
-      leaflet::addMarkers(data=df,icon=FishIcon, layerId = df$Estuaire,
+      leaflet::addMarkers(data=df,
+                          # icon=FishIcon,
+                          layerId = df$Estuaire,
                           popup = paste("Estuaires : ", df$Estuaire#, "<br>",
                                         #"Localisation : ", df$ouv_localisation
                           ))

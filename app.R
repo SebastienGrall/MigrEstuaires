@@ -71,38 +71,42 @@ ui <-shinydashboard::dashboardPage( title="MigrEstuaires",
                                                 tags$link(rel = "shortcut icon", href = "favicon.ico")),
                                       
                                       fluidRow(
+                                        shinydashboardPlus::box(title ="Fonctionnement",
+                                                                collapsible = TRUE,
+                                                                width = 3,
+                                                                textOutput("fonctionnement")),
                                         shinydashboardPlus::box(title ="Cartographie",
-                                                                                collapsible = TRUE,
-                                                                                width = 6,
-                                                                                leaflet::leafletOutput("map"),
-                                                                                selectizeInput("estuaires",
-                                                                                     label = "Choix de l'estuaire",
-                                                                                     choices = sort(liste_estuaires),
-                                                                                     selected = NULL,
-                                                                                     multiple = FALSE,
-                                                                                     options = list(
-                                                                                       placeholder = 'Choisissez un estuaire',
-                                                                                       onInitialize = I('function() { this.setValue(""); }')
-                                                                                     ))),
-                                                                  
-                                                                  shinydashboardPlus::box(title ="Enjeux migrateurs",
-                                                                                          collapsible = TRUE,
-                                                                                          width = 4,
-                                                                                          DTOutput("myTable")),
-                                                                  shinydashboardPlus::box(title ="Calendrier des migrations",
-                                                                                          collapsible = TRUE,
-                                                                                          width = 8,
-                                                                                          downloadButton("download_graphique", "Télécharger"),
-                                                                                          plotOutput("calendrier_mig")
-                                                                                          ),
-                                                                  shinydashboardPlus::box(title ="Perturbations et recommandations de gestion",
-                                                                                          collapsible = TRUE,
-                                                                                          width = 10,
-                                                                                          downloadButton("download_table_perturbation", "Télécharger"),
-                                                                                          #DTOutput("table_reco")
-                                                                                          reactable::reactableOutput("table_reco")
-                                                                                          )
-                                          )),
+                                                                collapsible = TRUE,
+                                                                width = 4,
+                                                                leaflet::leafletOutput("map"),
+                                                                selectizeInput("estuaires",
+                                                                               label = "Choix de l'estuaire",
+                                                                               choices = sort(liste_estuaires),
+                                                                               selected = NULL,
+                                                                               multiple = FALSE,
+                                                                               options = list(
+                                                                                 placeholder = 'Choisissez un estuaire',
+                                                                                 onInitialize = I('function() { this.setValue(""); }')
+                                                                               ))),
+                                        
+                                        shinydashboardPlus::box(title ="Enjeux migrateurs",
+                                                                collapsible = TRUE,
+                                                                width = 3,
+                                                                DTOutput("myTable")),
+                                        shinydashboardPlus::box(title ="Calendrier des migrations",
+                                                                collapsible = TRUE,
+                                                                width = 10,
+                                                                downloadButton("download_graphique", "Télécharger"),
+                                                                plotOutput("calendrier_mig")
+                                        ),
+                                        shinydashboardPlus::box(title ="Perturbations et recommandations de gestion",
+                                                                collapsible = TRUE,
+                                                                width = 10,
+                                                                downloadButton("download_table_perturbation", "Télécharger"),
+                                                                #DTOutput("table_reco")
+                                                                reactable::reactableOutput("table_reco")
+                                        )
+                                      )),
                                     
                                     sidebar =   shinydashboard::dashboardSidebar(disable = TRUE)
 )
@@ -110,7 +114,7 @@ ui <-shinydashboard::dashboardPage( title="MigrEstuaires",
 # Define server logic required to draw a histogram
 server <- function(input, output,session) {
   
-    data <- reactiveValues(clickedMarker=NULL)
+  data <- reactiveValues(clickedMarker=NULL)
   
   # produce the basic leaflet map with single marker
   
@@ -119,6 +123,7 @@ server <- function(input, output,session) {
   #   iconWidth = 50,
   # )
   
+  output$fonctionnement<-renderText("Description de l'appli et de la notice technique + lien de téléchargement du pdf de la notice")
   
   output$map <- leaflet::renderLeaflet(
     leaflet::leaflet() %>%
@@ -158,7 +163,7 @@ server <- function(input, output,session) {
   
   observeEvent(input$estuaires,{
     df <- df %>% mutate(lon = sf::st_coordinates(.)[,1],
-                  lat = sf::st_coordinates(.)[,2])
+                        lat = sf::st_coordinates(.)[,2])
     choix<-subset(df,Estuaire == input$estuaires)
     choix<- choix %>% distinct(Estuaire,lat,lon)
     leaflet::leafletProxy('map') %>%
@@ -180,14 +185,20 @@ server <- function(input, output,session) {
         datatable(rownames=F,options = list(
           dom='t'
         )
-          ) %>%
+        ) %>%
         formatStyle(
-        'Enjeux',
-        backgroundColor = styleEqual(c("Très fort","Fort","Moyen","Faible","Très faible"), c('red','orange','yellow','green','lightskyblue')))}
+          'Enjeux',
+          backgroundColor = styleEqual(c("Très fort","Fort","Moyen","Faible","Très faible"), c('red','orange','yellow','green','lightskyblue')))}
     )
   })
   
-  output$calendrier_mig <- renderPlot({
+  output$calendrier_mig<-renderPlot({
+    #cowplot::ggsave2(file="data/calendrier_migration.png", plot = plotInput(), device = "png",width = 50, height = 21, units= "cm")
+    print(plotInput())
+  })
+  
+  
+   plotInput<- reactive({
     
     calendrier<-read.csv2("data/calendrier_migration.csv",fileEncoding = "WINDOWS-1252")
     calendrier$Type.de.migration<-as.factor(calendrier$Type.de.migration)
@@ -195,8 +206,12 @@ server <- function(input, output,session) {
     calendrier$debut.periode <- as.Date(calendrier$debut.periode,format = "%d/%m/%Y")
     calendrier$fin.periode <- as.Date(calendrier$fin.periode,format = "%d/%m/%Y")
     
+    # calendrier <- calendrier %>% 
+    #   mutate(niveau.de.presence = str_wrap(niveau.de.presence, width = 15))
+    
     fills<-c("présence anectodique"="white","présence faible"="#B9DDF1","présence forte"="#5586B3","présence maximale"="#2A5783",
              "présence annuelle dans le \"grand estuaire\""="#98D688")
+    # fills<-str_wrap(fills, width = 15)
     
     esp_plot<-as.data.frame(unique(calendrier$Especes))
     esp_plot$niveau <-c("15","12","9.5","7","4.5","2")
@@ -210,11 +225,11 @@ server <- function(input, output,session) {
                                        ymax=niveau ))+
       geom_rect(aes(fill=niveau.de.presence),color="black")+ theme_bw()+
       geom_hline(yintercept = c(0:16),color="black")+
-      guides(fill=guide_legend(""))+
+      guides(fill=guide_legend("",label.theme = element_text(size = 10, lineheight = 0.8)))+
       scale_fill_manual(values = fills) + scale_x_date(breaks = "month",date_labels = "%d %b",
                                                        expand = (add = c(0.02, 0.2)))+
       scale_y_discrete(breaks = "null")+
-      theme(legend.position="right")+
+      theme(legend.position="bottom")+
       xlab(NULL) + ylim(0,17) + 
       theme(axis.text.y = element_blank(),
             text = element_text(size=15),
@@ -223,7 +238,9 @@ server <- function(input, output,session) {
             panel.grid.major.y  = element_blank(),
             panel.grid.minor.y  = element_blank(),
             plot.margin = margin(0, -5, 5, -5, "pt"),
-            panel.border = element_blank())
+            panel.border = element_blank(),
+            legend.text = element_text(
+              margin = margin(r = 30, l = 5, unit = "pt")))
     
     p_middle <- ggplot(sens_mig, aes(x = 1, y = niveau-0.5)) +
       geom_hline(yintercept = c(0:16),color="black")+
@@ -255,13 +272,13 @@ server <- function(input, output,session) {
                           nrow = 1, rel_widths = c(0.1, 0.1, 0.8),
                           align = "h"
     )
-  
+    
     
     return(calendar)
     
-})
-
-
+  })
+  
+  
   output$table_reco <- reactable::renderReactable(
     reco_pertu %>%
       reactable::reactable(
@@ -270,7 +287,7 @@ server <- function(input, output,session) {
           `Facteurs de perturbation` = colDef(html = TRUE),
           `Impacts potentiels` = colDef(html = TRUE),
           `Recommandations et Orientations` = colDef(html = TRUE)
-          )
+        )
       )
   )
   
@@ -285,11 +302,11 @@ server <- function(input, output,session) {
     }
   )
   
-
+  
   output$download_graphique <- downloadHandler(
-    filename = function() { paste0("calendrier_migration", ".png") },
+    filename = function() { "calendrier_migration.png" },
     content = function(file) {
-      ggsave2(file, plot = calendar, device = "png",width = 50, height = 21, units= "cm")
+      file.copy("calendrier_migration.png", file, overwrite=TRUE)
     }
   )
   

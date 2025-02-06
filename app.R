@@ -26,7 +26,7 @@ liaison_estuaires<-sf::read_sf("data/Liaisons_petits_estuaires.gpkg")
 liaison_estuaires <- liaison_estuaires %>%
   st_as_sf( coords = c("X", "Y")) %>%
   st_cast("MULTILINESTRING") %>%
-  st_set_crs("+init=epsg:2154") %>%
+  st_set_crs("EPSG:2154") %>%
   st_transform(crs="+proj=longlat +datum=WGS84")
 data_df<-as.data.frame(df)
 data_df<-select(data_df,1:3)
@@ -153,7 +153,7 @@ server <- function(input, output,session) {
   
   observeEvent(input$reset_button,{
     leaflet::leafletProxy('map') %>%
-      leaflet::setView(lat=49,lng=0.3,zoom=7)
+      leaflet::setView(lat=49.5,lng=0.3,zoom=7)
   })
   
   observeEvent(input$estuaires,{

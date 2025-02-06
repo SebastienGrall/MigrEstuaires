@@ -92,7 +92,9 @@ ui <-shinydashboard::dashboardPage( title="MigrEstuaires",
                                                                   shinydashboardPlus::box(title ="Calendrier des migrations",
                                                                                           collapsible = TRUE,
                                                                                           width = 8,
-                                                                                          plotOutput("calendrier_mig")),
+                                                                                          downloadButton("download_graphique", "Télécharger"),
+                                                                                          plotOutput("calendrier_mig")
+                                                                                          ),
                                                                   shinydashboardPlus::box(title ="Perturbations et recommandations de gestion",
                                                                                           collapsible = TRUE,
                                                                                           width = 10,
@@ -123,7 +125,7 @@ server <- function(input, output,session) {
       leaflet::addPolylines(data=liaison_estuaires,color = "black",opacity = 1,weight = 2) %>%
       leaflet::addTiles() %>%
       leaflet::addControl(actionButton("reset_button","Vue générale"),position="topright") %>%
-      leaflet::setView(lat=49,lng=0.3,zoom=7) %>%
+      leaflet::setView(lat=49.5,lng=0.3,zoom=7) %>%
       leaflet::addMarkers(data=df,
                           # icon=FishIcon,
                           layerId = df$Estuaire,
@@ -249,13 +251,13 @@ server <- function(input, output,session) {
             plot.margin = margin(0, -5, 5, -5, "pt"),
             panel.border = element_blank())
     
-    
+    calendar <- plot_grid(p_left, p_middle, p_right,
+                          nrow = 1, rel_widths = c(0.1, 0.1, 0.8),
+                          align = "h"
+    )
   
     
-    return(  plot_grid(p_left, p_middle, p_right,
-                       nrow = 1, rel_widths = c(0.1, 0.1, 0.8),
-                       align = "h"
-    ))
+    return(calendar)
     
 })
 
@@ -280,6 +282,14 @@ server <- function(input, output,session) {
     content = function(file) {
       # Write the dataset to the `file` that will be downloaded
       write.csv2(reco_pertu, file,row.names = F,fileEncoding = "WINDOWS-1252")
+    }
+  )
+  
+
+  output$download_graphique <- downloadHandler(
+    filename = function() { paste0("calendrier_migration", ".png") },
+    content = function(file) {
+      ggsave2(file, plot = calendar, device = "png",width = 50, height = 21, units= "cm")
     }
   )
   

@@ -89,7 +89,8 @@ ui <-shinydashboard::dashboardPage( title="MigrEstuaires",
                                         shinydashboardPlus::box(title ="Fonctionnement",
                                                                 collapsible = TRUE,
                                                                 width = 3,
-                                                                textOutput("fonctionnement")),
+                                                                uiOutput("fonctionnement"),
+                                                                downloadButton("download_notice", "Télécharger la note méthodologique")),
                                         shinydashboardPlus::box(title ="Cartographie",
                                                                 collapsible = TRUE,
                                                                 width = 4,
@@ -138,7 +139,22 @@ server <- function(input, output,session) {
   #   iconWidth = 50,
   # )
   
-  output$fonctionnement<-renderText("Description de l'appli et de la notice technique + lien de téléchargement du pdf de la notice")
+  output$fonctionnement<-renderText(HTML(paste("
+<b>Cette application a été développée et réalisée par SEINORMIGR.</b><br><br>
+Les estuaires, et les embouchures plus généralement, sont des passages obligés pour les poissons grands migrateurs dans l’accomplissement de leurs cycles biologiques. Certains individus (Anguilles, Lamproies fluviatiles, Truites de mer, Aloses) peuvent même être présents dans les estuaires de façon quasi permanente (hors reproduction) pour se nourrir.
+<br><br>
+Cet outil est principalement destiné à orienter les porteurs de projets en estuaires afin de définir au mieux les enjeux associés aux poissons migrateurs dans le but de limiter au maximum les impacts sur ces populations.
+<br><br>
+Pour une bonne utilisation, consultez les documents de la manière suivante :<br>
+
+ <b> 1.Choisissez un estuaire pour connaître les niveaux d’enjeux par espèce associés <br>
+     2.Consulter le calendrier de présence des espèces <br>
+     3.Consulter le tableau des recommandations en fonction de l’activité</b><br><br>
+
+
+Une notice méthodologique décrivant les étapes de réalisation des différents documents est disponible en téléchargement ci-dessous.<br>
+
+Cette notice contient également la carte globale des enjeux migrateurs des estuaires normands.")))
   
   output$map <- leaflet::renderLeaflet(
     leaflet::leaflet() %>%
@@ -149,12 +165,12 @@ server <- function(input, output,session) {
       leaflet::addMarkers(data=df,
                           # icon=FishIcon,
                           layerId = df$Estuaire,
-                          popup = if_else(df$Estuaire == "Petits havres du Cotentin",paste("Estuaires : ", df$Estuaire, "<br>",
+                          popup = if_else(df$Estuaire == "Petits havres du Cotentin",paste("Estuaire : ", df$Estuaire, "<br>",
                                                                                        "Cours d'eau : la Gerfleur, l'Olonde, la Dure,
                                                                                        l'Ay, le Thar"),
-                          if_else(df$Estuaire == "Côtiers Seino-Marins",paste("Estuaires : ", df$Estuaire, "<br>",
+                          if_else(df$Estuaire == "Côtiers Seino-Marins",paste("Estuaire : ", df$Estuaire, "<br>",
                                                                                "Cours d'eau : la Valmont, la Durdent, la Saâne, la Scie, l'Yères"),
-                          paste("Estuaires : ", df$Estuaire))
+                          paste("Estuaire : ", df$Estuaire))
                           ))
                           
   )
@@ -202,10 +218,12 @@ server <- function(input, output,session) {
       df<-subset(data_df,Estuaire==input$estuaires)
       df<-df[order(df$Enjeux),]
       df %>% 
-        datatable(rownames=F,options = list(
-          dom='t'
-        )
-        ) %>%
+        datatable(rownames=F,extensions = "Buttons",options = list(
+          dom='Bt',
+          buttons=list(
+          list(extend="excel",
+               filename = "table enjeux"))
+        )) %>%
         formatStyle(
           'Enjeux',
           backgroundColor = styleEqual(c("Très fort","Fort","Moyen","Faible","Très faible"), c('red','orange','yellow','green','lightskyblue')))}
@@ -327,6 +345,13 @@ server <- function(input, output,session) {
     filename = function() { "calendrier_migration.png" },
     content = function(file) {
       file.copy("data/calendrier_migration.png", file, overwrite=TRUE)
+    }
+  )
+  
+  output$download_notice <- downloadHandler(
+    filename = function() { "Note_methodologique.pdf" },
+    content = function(file) {
+      file.copy("data/Note_methodologique_VF.pdf", file, overwrite=TRUE)
     }
   )
   

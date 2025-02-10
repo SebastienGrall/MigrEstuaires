@@ -261,14 +261,19 @@ Cette notice contient également la carte globale des enjeux migrateurs des estu
     p_right <-  ggplot(calendrier ,aes(xmin=debut.periode,xmax=fin.periode,
                                        ymin=niveau-1,
                                        ymax=niveau ))+
-      geom_rect(aes(fill=niveau.de.presence),color="black")+ theme_bw()+
+      geom_rect(aes(fill=niveau.de.presence),color="black")+
+      geom_text(aes(x=as.Date("2000-05-15"),y=3.5,label="Smolts"))+
+      geom_text(aes(x=as.Date("2000-12-01"),y=3.5,label="Post-fraie"))+
+      geom_text(aes(x=as.Date("2000-01-25"),y=1.5,label="Post-fraie"))+
+      geom_text(aes(x=as.Date("2000-04-01"),y=1.5,label="Smolts"))+
+      theme_bw()+
       geom_hline(yintercept = c(0:16),color="black")+
       guides(fill=guide_legend("",label.theme = element_text(size = 10, lineheight = 0.8)))+
       scale_fill_manual(values = fills) + scale_x_date(breaks = "month",date_labels = "%d %b",
                                                        expand = (add = c(0.02, 0.2)))+
       scale_y_discrete(breaks = "null")+
       theme(legend.position="bottom")+
-      xlab(NULL) + ylim(0,17) + 
+      xlab(NULL) + ylim(0,17) + ylab(NULL) +
       theme(axis.text.y = element_blank(),
             text = element_text(size=15),
             axis.ticks = element_blank(),

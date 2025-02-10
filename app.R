@@ -20,14 +20,29 @@ library(ggplot2)
 library(cowplot)
 library(reactable)
 
-df<-sf::read_sf("data/Migrateurs_estuaires.gpkg")
+df<-sf::read_sf("data/Migrateurs_estuaires_wgs84.gpkg")
 liaison_estuaires<-sf::read_sf("data/Liaisons_petits_estuaires.gpkg")
+
+df <- df %>% st_as_sf( coords = c("X", "Y")) %>%
+  st_set_crs("EPSG:2154") %>%
+  st_transform(4326)
+
+df <- df %>% mutate(
+  SPP = case_when(
+    SPP == "SAT" ~ "Saumon atlantique",
+    SPP == "TRM" ~ "Truite de mer",
+    SPP == "ALA" ~ "Aloses",
+    SPP == "LPM" ~ "Lamproie marine",
+    SPP == "LPF" ~ "Lamproie fluviatile",
+    SPP == "ANG" ~ "Anguille européenne"
+  )
+)
 
 liaison_estuaires <- liaison_estuaires %>%
   st_as_sf( coords = c("X", "Y")) %>%
   st_cast("MULTILINESTRING") %>%
   st_set_crs("EPSG:2154") %>%
-  st_transform(crs="+proj=longlat +datum=WGS84")
+  st_transform(4326)
 data_df<-as.data.frame(df)
 data_df<-select(data_df,1:3)
 data_df <- data_df %>%  rename(Espèces = SPP)
@@ -134,9 +149,14 @@ server <- function(input, output,session) {
       leaflet::addMarkers(data=df,
                           # icon=FishIcon,
                           layerId = df$Estuaire,
-                          popup = paste("Estuaires : ", df$Estuaire#, "<br>",
-                                        #"Localisation : ", df$ouv_localisation
+                          popup = if_else(df$Estuaire == "Petits havres du Cotentin",paste("Estuaires : ", df$Estuaire, "<br>",
+                                                                                       "Cours d'eau : la Gerfleur, l'Olonde, la Dure,
+                                                                                       l'Ay, le Thar"),
+                          if_else(df$Estuaire == "Côtiers Seino-Marins",paste("Estuaires : ", df$Estuaire, "<br>",
+                                                                               "Cours d'eau : la Valmont, la Durdent, la Saâne, la Scie, l'Yères"),
+                          paste("Estuaires : ", df$Estuaire))
                           ))
+                          
   )
   
   observe({
@@ -294,11 +314,11 @@ server <- function(input, output,session) {
   output$download_table_perturbation <- downloadHandler(
     filename = function() {
       # Use the selected dataset as the suggested file name
-      paste0("tableau perturbations", ".csv")
+      "tableau perturbations.xlsx"
     },
     content = function(file) {
       # Write the dataset to the `file` that will be downloaded
-      write.csv2(reco_pertu, file,row.names = F,fileEncoding = "WINDOWS-1252")
+      file.copy("data/Activites_recommandations_VF.xlsx", file, overwrite=TRUE)
     }
   )
   
@@ -306,7 +326,7 @@ server <- function(input, output,session) {
   output$download_graphique <- downloadHandler(
     filename = function() { "calendrier_migration.png" },
     content = function(file) {
-      file.copy("calendrier_migration.png", file, overwrite=TRUE)
+      file.copy("data/calendrier_migration.png", file, overwrite=TRUE)
     }
   )
   
